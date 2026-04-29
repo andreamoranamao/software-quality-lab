@@ -10,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -27,30 +29,60 @@ public class UserServiceTest {
 
     @InjectMocks
     UserService userService;
+    // request válido para reusar
+    private UserController.UserRequest validRequest() {
+        return new UserController.UserRequest("juan4_dev", "Juan", "Perez", "6641234567", "juan4#gmail.com", 25);
+    }
+
+    // simular user guardado en bd
+    private User savedUser(String username) {
+        User u = new User(username, "Juan", "Perez", "6641234567", "juan4#gmail.com", 25);
+        u.setId(1L);
+        return u;
+    }
+
+
+
 
     // ─── Caso exitoso ─────────────────────────────────────────────────────────
 
     @Test
     void shouldRegisterUserSuccessfully() {
-        // TODO: arrange — construir un UserRequest válido, mockear emailValidatorService.isValid para que regrese true,
-        //       mockear userRepository.existsByUsername para que regrese false,
-        //       mockear userRepository.save para que regrese un User con id
-        // TODO: act — llamar a userService.registerUser(request)
-        // TODO: assert — verificar id, username, status == "ACTIVE"; confirmar que save fue llamado una vez
+        //arrange
+        when(emailValidatorService.isValid(anyString())).thenReturn(true);
+        when(userRepository.existsByUsername("juan4_dev")).thenReturn(false);
+        when(userRepository.save(any(User.class))).thenReturn(savedUser("juan4_dev"));
+
+        var response = userService.registerUser(validRequest());
+
+        assertNotNull(response.id());
+        assertEquals("juan4_dev", response.username());
+        assertEquals("ACTIVE", response.status());
+        verify(userRepository, times(1)).save(any(User.class));
     }
 
     @Test
     void shouldGetUserByIdSuccessfully() {
-        // TODO: arrange — mockear userRepository.findById para que regrese un Optional<User> con datos
-        // TODO: act — llamar a userService.getUserById(1L)
-        // TODO: assert — verificar que los campos del response coincidan con el mock
+        //Arrange
+        when(userRepository.findById(1L)).thenReturn(Optional.of(savedUser("juan4_dev")));
+
+        //Act
+        var response = userService.getUserById(1L);
+
+        //Assert
+        assertEquals(1L, response.id());
+        assertEquals("juan4_dev", response.username());
     }
 
     @Test
     void shouldSuspendActiveUserSuccessfully() {
-        // TODO: arrange — mockear findById con un usuario ACTIVE
-        // TODO: act — llamar a userService.suspendUser(id)
-        // TODO: assert — verificar que el status regresado sea "SUSPENDED"; confirmar que save fue llamado
+        when(userRepository.findById(1L)).thenReturn(Optional.of(savedUser("juan4_dev")));
+        when(userRepository.save(any(User.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        var response = userService.suspendUser(1L);
+
+        assertEquals("SUSPENDED", response.status());
+        verify(userRepository, times(1)).save(any(User.class));
     }
 
     // ─── Validaciones de Username ─────────────────────────────────────────────
@@ -58,19 +90,30 @@ public class UserServiceTest {
     @Test
     void shouldThrowWhenUsernameTooShort() {
         // TODO: construir request con username de 4 caracteres
+        var request = new UserController.UserRequest("juan", "Juan", "Perez", "6641234567", " juan4 # gmail . com ", 25);
+        //Assert
+        assertThrows(InvalidUserDataException.class, () -> {userService.registerUser(request);
+        });
         // TODO: assertThrows InvalidUserDataException
     }
 
     @Test
     void shouldThrowWhenUsernameTooLong() {
         // TODO: construir request con username de 21 caracteres
+        var request = new UserController.UserRequest("juan_perez234ghtuj6okgkko", "Juan", "Perez", "6641234567", " juan4 # gmail . com ", 25);
+
         // TODO: assertThrows InvalidUserDataException
+        assertThrows(InvalidUserDataException.class, () -> {userService.registerUser(request);});
+
     }
 
     @Test
     void shouldThrowWhenUsernameHasInvalidChars() {
         // TODO: username con mayúsculas o caracteres especiales, ej. "User@Name"
+        var request = new UserController.UserRequest("juan", "Juan", "Perez", "6641234567", "User@Name", 25);
+
         // TODO: assertThrows InvalidUserDataException
+        assertThrows(InvalidUserDataException.class, () -> {userService.registerUser(request);});
     }
 
     @Test
