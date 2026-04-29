@@ -10,3 +10,5 @@
 /httpRequests/
 # carpeta .idea
 /.idea
+# carpeta build
+/build
