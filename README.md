@@ -29,14 +29,15 @@
 <!-- Describan brevemente qué hicieron, dificultades que encontraron o decisiones que tomaron -->
 Se implementaron las reglas para validar que un nuevo usuario pueda ser registrado, así como las funciones para obtener un usuario por id o suspender a un usuario.
 También se implementó correctamente las rutas de la API en el controlador y el manejo correcto de excepciones.
-No se encontraron dificultades en esta sección, todo estaba muy claro. Se decidió implementarlas lo más rápido posible ya que comenzamos tarde con el Code Challenge.
+No se encontraron dificultades en esta sección, todo estaba muy claro... con excepción del trabajo con Git y GitHub, ahí si hubo complicaciones.
+Se decidió implementarlas lo más rápido posible ya que comenzamos tarde con el Code Challenge. Se ejecutaron todas las pruebas unitarias sugeridas y todas pasaron.
 
-### Cobertura obtenida
+### Cobertura obtenida (en UserService)
 
 | Métrica | Resultado |
-|---|---|
-| Line coverage | <!-- ej. 91% --> |
-| Branch coverage | <!-- ej. 87% --> |
+|---|-----------|
+| Line coverage | 95%       |
+| Branch coverage | 86%       |
 
 ---
 
