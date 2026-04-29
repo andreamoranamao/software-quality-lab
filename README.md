@@ -4,21 +4,21 @@
 
 **Nombre del equipo:** <!-- Nombre de su equipo -->
 
-| Nombre completo | Matrícula |
-|---|---|
-| Estudiante 1 | 000000 |
-| Estudiante 2 | 000000 |
-| Estudiante 3 | 000000 |
+| Nombre completo              | Matrícula |
+|------------------------------|-----------|
+| Andrea Moran Amao            | E014030   |
+| Angela Aguilar Rivas         | E014024   |
+| Angel Rogelio Camacho Romero | E013511   |
 
 ---
 
 ## Entrega
 
-**Fecha:** <!-- Fecha de entrega -->
+**Fecha:** Martes 28 de Abril de 2026
 
-**Modalidad:** <!-- ZIP / GitHub -->
+**Modalidad:** GitHub
 
-**Link del repositorio (si aplica):** <!-- https://github.com/... -->
+**Link del repositorio (si aplica):** <!-- https://github.com/... --> :P
 
 ---
 
@@ -27,6 +27,9 @@
 ### ¿Qué implementaron?
 
 <!-- Describan brevemente qué hicieron, dificultades que encontraron o decisiones que tomaron -->
+Se implementaron las reglas para validar que un nuevo usuario pueda ser registrado, así como las funciones para obtener un usuario por id o suspender a un usuario.
+También se implementó correctamente las rutas de la API en el controlador y el manejo correcto de excepciones.
+No se encontraron dificultades en esta sección, todo estaba muy claro. Se decidió implementarlas lo más rápido posible ya que comenzamos tarde con el Code Challenge.
 
 ### Cobertura obtenida
 
