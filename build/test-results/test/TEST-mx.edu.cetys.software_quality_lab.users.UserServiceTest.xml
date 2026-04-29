@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="mx.edu.cetys.software_quality_lab.users.UserServiceTest" tests="21" skipped="0" failures="6" errors="0" timestamp="2026-04-29T05:19:15.123Z" hostname="MacBook-Air-de-Angela.local" time="0.453">
+  <properties/>
+  <testcase name="shouldThrowWhenFirstNameContainsNumbers()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.398"/>
+  <testcase name="shouldThrowWhenPhoneHasWrongLength()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.002"/>
+  <testcase name="shouldGetUserByIdSuccessfully()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.012">
+    <failure message="java.lang.UnsupportedOperationException: TODO: implementar getUserById" type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: TODO: implementar getUserById
+	at mx.edu.cetys.software_quality_lab.users.UserService.getUserById(UserService.java:49)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.shouldGetUserByIdSuccessfully(UserServiceTest.java:70)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+</failure>
+  </testcase>
+  <testcase name="shouldThrowWhenAgeIsBelowTwelve()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.001"/>
+  <testcase name="shouldThrowWhenUsernameHasInvalidChars()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.005">
+    <failure message="org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;mx.edu.cetys.software_quality_lab.users.exceptions.InvalidUserDataException&gt; but was: &lt;java.lang.UnsupportedOperationException&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;mx.edu.cetys.software_quality_lab.users.exceptions.InvalidUserDataException&gt; but was: &lt;java.lang.UnsupportedOperationException&gt;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.shouldThrowWhenUsernameHasInvalidChars(UserServiceTest.java:116)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: java.lang.UnsupportedOperationException: TODO: implementar registerUser
+	at mx.edu.cetys.software_quality_lab.users.UserService.registerUser(UserService.java:39)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.lambda$shouldThrowWhenUsernameHasInvalidChars$0(UserServiceTest.java:116)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+</failure>
+  </testcase>
+  <testcase name="shouldRegisterUserSuccessfully()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.006">
+    <failure message="java.lang.UnsupportedOperationException: TODO: implementar registerUser" type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: TODO: implementar registerUser
+	at mx.edu.cetys.software_quality_lab.users.UserService.registerUser(UserService.java:39)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.shouldRegisterUserSuccessfully(UserServiceTest.java:56)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+</failure>
+  </testcase>
+  <testcase name="shouldSuspendActiveUserSuccessfully()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.004">
+    <failure message="java.lang.UnsupportedOperationException: TODO: implementar suspendUser" type="java.lang.UnsupportedOperationException">java.lang.UnsupportedOperationException: TODO: implementar suspendUser
+	at mx.edu.cetys.software_quality_lab.users.UserService.suspendUser(UserService.java:60)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.shouldSuspendActiveUserSuccessfully(UserServiceTest.java:82)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+</failure>
+  </testcase>
+  <testcase name="shouldThrowWhenUsernameTooShort()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.002">
+    <failure message="org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;mx.edu.cetys.software_quality_lab.users.exceptions.InvalidUserDataException&gt; but was: &lt;java.lang.UnsupportedOperationException&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;mx.edu.cetys.software_quality_lab.users.exceptions.InvalidUserDataException&gt; but was: &lt;java.lang.UnsupportedOperationException&gt;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.shouldThrowWhenUsernameTooShort(UserServiceTest.java:95)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: java.lang.UnsupportedOperationException: TODO: implementar registerUser
+	at mx.edu.cetys.software_quality_lab.users.UserService.registerUser(UserService.java:39)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.lambda$shouldThrowWhenUsernameTooShort$0(UserServiceTest.java:95)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+</failure>
+  </testcase>
+  <testcase name="shouldThrowWhenLastNameTooShort()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.0"/>
+  <testcase name="shouldThrowWhenAgeExceedsMaximum()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.0"/>
+  <testcase name="shouldThrowWhenUsernameStartsWithUnderscore()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.0"/>
+  <testcase name="shouldThrowWhenSuspendingAlreadySuspendedUser()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.001"/>
+  <testcase name="shouldThrowWhenPhoneContainsLetters()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.001"/>
+  <testcase name="shouldThrowWhenUsernameTooLong()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.001">
+    <failure message="org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;mx.edu.cetys.software_quality_lab.users.exceptions.InvalidUserDataException&gt; but was: &lt;java.lang.UnsupportedOperationException&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;mx.edu.cetys.software_quality_lab.users.exceptions.InvalidUserDataException&gt; but was: &lt;java.lang.UnsupportedOperationException&gt;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.shouldThrowWhenUsernameTooLong(UserServiceTest.java:106)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: java.lang.UnsupportedOperationException: TODO: implementar registerUser
+	at mx.edu.cetys.software_quality_lab.users.UserService.registerUser(UserService.java:39)
+	at mx.edu.cetys.software_quality_lab.users.UserServiceTest.lambda$shouldThrowWhenUsernameTooLong$0(UserServiceTest.java:106)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+</failure>
+  </testcase>
+  <testcase name="shouldThrowWhenUsernameAlreadyExists()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.001"/>
+  <testcase name="shouldThrowWhenFirstNameTooShort()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.001"/>
+  <testcase name="shouldThrowWhenAgeIsExactlyTwelve()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.002"/>
+  <testcase name="shouldThrowWhenUserNotFound()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.002"/>
+  <testcase name="shouldThrowWhenEmailIsInvalid()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.001"/>
+  <testcase name="shouldThrowWhenUsernameEndsWithUnderscore()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.002"/>
+  <testcase name="shouldThrowWhenLastNameContainsNumbers()" classname="mx.edu.cetys.software_quality_lab.users.UserServiceTest" time="0.0"/>
+  <system-out><![CDATA[22:19:15.538 [Test worker] INFO mx.edu.cetys.software_quality_lab.users.UserService -- Buscando usuario por ID, id=1
+22:19:15.547 [Test worker] INFO mx.edu.cetys.software_quality_lab.users.UserService -- Iniciando registro de usuario, username=juan
+22:19:15.554 [Test worker] INFO mx.edu.cetys.software_quality_lab.users.UserService -- Iniciando registro de usuario, username=juan4_dev
+22:19:15.558 [Test worker] INFO mx.edu.cetys.software_quality_lab.users.UserService -- Suspendiendo usuario, id=1
+22:19:15.561 [Test worker] INFO mx.edu.cetys.software_quality_lab.users.UserService -- Iniciando registro de usuario, username=juan
+22:19:15.567 [Test worker] INFO mx.edu.cetys.software_quality_lab.users.UserService -- Iniciando registro de usuario, username=juan_perez234ghtuj6okgkko
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/angelaaguilarrivas/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.17.8/f09415827a71be7ed621c7bd02550678f28bc81c/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
