@@ -24,7 +24,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED) // HTTP 201: recurso creado exitosamente
     ApiResponse<UserWrapper> registerUser(@RequestBody UserRequest request) {
         // TODO: llamar a userService.registerUser, envolver en ApiResponse y regresar
-        return new ApiResponse<>("¡Usuario nuevo creado!", new UserWrapper(userService.registerUser(request)), null);
+        return new ApiResponse<>("¡Usuario registrado!", new UserWrapper(userService.registerUser(request)), null);
     }
 
     // GET /users/{id} — obtener un usuario por ID

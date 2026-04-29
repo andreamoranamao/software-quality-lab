@@ -67,7 +67,7 @@ public class UserService {
             throw new InvalidUserDataException("El phone debe se de 10 digitos");
         }
 
-        if (!request.phone().matches("^[0-9]$")) {
+        if (!request.phone().matches("^\\d+$")) {
             throw new InvalidUserDataException("El phone no debe contener letras o caracteres especiales, solo números.");
         }
 
@@ -79,7 +79,7 @@ public class UserService {
             throw new DuplicateUsernameException("Este nombre de usuario ya existe");
         }
 
-        if (request.username().matches("[a-z0-9_]")) {
+        if (request.username().matches("^[a-z0-9_]*$")) {
             var newUser = userRepository.save(new User(request.username(), request.firstName(), request.lastName(), request.phone(), request.email(), request.age()));
             return mapToResponse(newUser);
         } else {
