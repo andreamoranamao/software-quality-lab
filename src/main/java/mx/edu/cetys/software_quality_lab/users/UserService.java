@@ -1,5 +1,8 @@
 package mx.edu.cetys.software_quality_lab.users;
 
+import mx.edu.cetys.software_quality_lab.users.exceptions.DuplicateUsernameException;
+import mx.edu.cetys.software_quality_lab.users.exceptions.InvalidUserDataException;
+import mx.edu.cetys.software_quality_lab.users.exceptions.UserNotFoundException;
 import mx.edu.cetys.software_quality_lab.validators.EmailValidatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +38,53 @@ public class UserService {
      */
     UserController.UserResponse registerUser(UserController.UserRequest request) {
         log.info("Iniciando registro de usuario, username={}", request.username());
-        // TODO: implementar las reglas 1-7, luego guardar en BD y mapear la respuesta
-        throw new UnsupportedOperationException("TODO: implementar registerUser");
+
+        if (request.username().isBlank() || request.username().length() < 5 || request.username().length() > 20) {
+            throw new InvalidUserDataException("El username debe tener entre 5 y 20 caracteres");
+        }
+
+        if (request.username().startsWith("_") || request.username().endsWith("_")) {
+            throw new InvalidUserDataException("El username no debe iniciar o terminar con _");
+        }
+
+        if (request.username().matches("[A-Z]")) {
+            throw new InvalidUserDataException("El username solo debe contener minusculas, no mayusculas");
+        }
+
+        if (request.firstName().length() < 2 || request.firstName().length() > 50) {
+            throw new InvalidUserDataException("El first name debe tener entre 2 y 50 caracteres");
+        }
+
+        if (request.lastName().length() < 2 || request.lastName().length() > 50) {
+            throw new InvalidUserDataException("El last name debe tener entre 2 y 50 caracteres");
+        }
+
+        if (request.age() < 12 || request.age() > 120) {
+            throw new InvalidUserDataException("El age debe tener entre 12 y 120");
+        }
+
+        if (request.phone().length() != 10) {
+            throw new InvalidUserDataException("El phone debe se de 10 digitos");
+        }
+
+        if (!request.phone().matches("^[0-9]$")) {
+            throw new InvalidUserDataException("El phone no debe contener letras o caracteres especiales, solo números.");
+        }
+
+        if (!emailValidatorService.isValid(request.email())) {
+            throw new InvalidUserDataException("El email no es valido");
+        }
+
+        if (userRepository.existsByUsername(request.username())) {
+            throw new DuplicateUsernameException("Este nombre de usuario ya existe");
+        }
+
+        if (request.username().matches("[a-z0-9_]")) {
+            var newUser = userRepository.save(new User(request.username(), request.firstName(), request.lastName(), request.phone(), request.email(), request.age()));
+            return mapToResponse(newUser);
+        } else {
+            throw new InvalidUserDataException("El username contiene caracteres invalidos");
+        }
     }
 
     /**
@@ -45,8 +93,11 @@ public class UserService {
      */
     UserController.UserResponse getUserById(Long id) {
         log.info("Buscando usuario por ID, id={}", id);
-        // TODO: buscar por id con findById, lanzar UserNotFoundException si está vacío, mapear y regresar
-        throw new UnsupportedOperationException("TODO: implementar getUserById");
+
+        var user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
+
+        return mapToResponse(user);
     }
 
     /**
@@ -56,12 +107,22 @@ public class UserService {
      */
     UserController.UserResponse suspendUser(Long id) {
         log.info("Suspendiendo usuario, id={}", id);
-        // TODO: buscar usuario, validar status, cambiar a SUSPENDED, guardar, mapear y regresar
-        throw new UnsupportedOperationException("TODO: implementar suspendUser");
+
+        var user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
+
+        if(user.getStatus() != UserStatus.SUSPENDED) {
+            user.setStatus(UserStatus.SUSPENDED);
+        } else {
+            throw new InvalidUserDataException("El usuario ya está suspendido");
+        }
+
+        var userWithUpdatedStatus = userRepository.save(user);
+
+        return mapToResponse(userWithUpdatedStatus);
     }
 
     private UserController.UserResponse mapToResponse(User user) {
-        // TODO: mapear los campos de la Entity User al record UserController.UserResponse
-        throw new UnsupportedOperationException("TODO: implementar mapToResponse");
+        return new UserController.UserResponse(user.getId(), user.getUsername(), user.getFirstName(), user.getLastName(), user.getPhone(), user.getEmail(), user.getAge(), user.getStatus().toString());
     }
 }
